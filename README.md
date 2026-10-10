@@ -1,5 +1,7 @@
 # Bud Buddy
 
+FORK: Trimmed version with only the main screen to toggle the basic features.
+
 [![Latest Release](https://img.shields.io/github/v/release/BenEgeDeniz/BudBuddy?style=flat-square)](https://github.com/BenEgeDeniz/BudBuddy/releases)
 
 <img src="budbuddy.png" alt="Bud Buddy Icon" width="100"/>
