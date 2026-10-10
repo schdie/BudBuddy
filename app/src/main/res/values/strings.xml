@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <resources>
-	<string name="app_name">Bud Buddy</string>
+	<string name="app_name">Buds Control</string>
 	<string name="gestures_not_supported">Gestures Are Experimental</string>
 	<string name="experimental_gestures_warning">Gesture support for the currently connected Galaxy Buds model is highly unstable and experimental. Would you like to enable this feature for testing purposes?</string>
 	<string name="enable">Enable</string>
@@ -118,7 +118,7 @@
 	<string name="recently_played">Recently Played</string>
 	<string name="expand_collapse">Expand/Collapse</string>
 	<string name="welcome_to">Welcome to</string>
-	<string name="bud_buddy">Bud Buddy</string>
+	<string name="bud_buddy">Buds Control</string>
 	<string name="supported_earbuds">Supported Earbuds</string>
 	<string name="have_a_different_model_you_are_welcome_t">Have a different model? You are welcome to try, though we are actively working to add official support for other models soon.</string>
 	<string name="permissions_required">Permissions Required</string>
