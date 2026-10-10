@@ -4,37 +4,17 @@ import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
-import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
 
 object PermissionManager {
     fun hasRequiredPermissions(context: Context): Boolean {
-        val prefs = context.getSharedPreferences("BudsPrefs", Context.MODE_PRIVATE)
-        val hasCompletedSetup = prefs.getBoolean("has_seen_app_intro", false)
-        
-        val requiredPermissions = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            if (hasCompletedSetup) {
-                arrayOf(
-                    Manifest.permission.BLUETOOTH_CONNECT,
-                    Manifest.permission.BLUETOOTH_SCAN
-                )
-            } else {
-                arrayOf(
-                    Manifest.permission.BLUETOOTH_CONNECT,
-                    Manifest.permission.BLUETOOTH_SCAN,
-                    Manifest.permission.POST_NOTIFICATIONS
-                )
-            }
+        val required = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            listOf(Manifest.permission.BLUETOOTH_CONNECT, Manifest.permission.BLUETOOTH_SCAN)
         } else {
-            arrayOf(
-                Manifest.permission.BLUETOOTH,
-                Manifest.permission.BLUETOOTH_ADMIN
-            )
+            listOf(Manifest.permission.BLUETOOTH, Manifest.permission.BLUETOOTH_ADMIN)
         }
-        val systemPerms = requiredPermissions.all {
+        return required.all {
             ContextCompat.checkSelfPermission(context, it) == PackageManager.PERMISSION_GRANTED
         }
-        val notificationPerm = NotificationManagerCompat.getEnabledListenerPackages(context).contains(context.packageName)
-        return systemPerms && notificationPerm
     }
 }

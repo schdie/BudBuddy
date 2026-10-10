@@ -1,7 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
-    alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.kotlin.serialization) // remove if nothing uses @Serializable after cleanup
 }
 
 android {
@@ -9,33 +9,13 @@ android {
     compileSdk = 37
 
     defaultConfig {
-        applicationId = "com.benegedeniz.budsdynamiceq"
+        applicationId = "com.benegedeniz.budsdynamiceq" // change this if you want it installed next to the original
         minSdk = 29
         targetSdk = 37
-        versionCode = 13
-        versionName = "1.8.1"
+        versionCode = 1
+        versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        resourceConfigurations += listOf("en", "tr", "az", "ru")
-    }
-
-    bundle {
-        language {
-            enableSplit = false
-        }
-    }
-
-    flavorDimensions += "distribution"
-    productFlavors {
-        create("playstore") {
-            dimension = "distribution"
-        }
-        create("github") {
-            dimension = "distribution"
-        }
-        create("fdroid") {
-            dimension = "distribution"
-        }
+        //testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -72,16 +52,13 @@ dependencies {
     implementation(libs.androidx.compose.material.icons.extended)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.kotlinx.coroutines.android)
-    implementation(libs.kotlinx.serialization.json)
-    implementation("org.burnoutcrew.composereorderable:reorderable:0.9.6")
-    implementation(libs.androidx.glance.appwidget)
-    implementation(libs.androidx.glance.material3)
-    implementation(libs.androidx.navigation.compose)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
-    androidTestImplementation(libs.androidx.compose.ui.test.junit4)
-    debugImplementation(libs.androidx.compose.ui.tooling)
-    debugImplementation(libs.androidx.compose.test.manifest)
+    implementation(libs.kotlinx.serialization.json) // remove together with the plugin if unused
+    implementation(libs.androidx.navigation.compose) // remove if MainScreen no longer navigates anywhere
+    //testImplementation(libs.junit)
+    //androidTestImplementation(libs.androidx.junit)
+    //androidTestImplementation(libs.androidx.espresso.core)
+    //androidTestImplementation(platform(libs.androidx.compose.bom))
+    //androidTestImplementation(libs.androidx.compose.ui.test.junit4)
+    //debugImplementation(libs.androidx.compose.ui.tooling)
+    //debugImplementation(libs.androidx.compose.test.manifest)
 }
